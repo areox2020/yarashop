@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YARA SHOP - إكسسوارات نسائية، ألعاب أطفال، منتجات تجميل - مراكش</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;600;700;800&family=Cairo:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d81b60;
+            --secondary: #8e24aa;
+            --accent: #ff8f00;
+            --light-pink: #f8bbd9;
+            --light-purple: #e1bee7;
+            --light-blue: #b3e5fc;
+            --dark: #333333;
+            --darker: #222222;
+            --light: #f9f9f9;
+            --gray: #f5f5f5;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-light: linear-gradient(135deg, var(--light-pink) 0%, var(--light-purple) 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Almarai', 'Cairo', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .logo-text .tagline {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-top: 3px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            right: 0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 1.4rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(216, 27, 96, 0.05) 0%, rgba(142, 36, 170, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero-text h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--darker);
+            line-height: 1.2;
+        }
+        
+        .hero-text h2 span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .hero-feature i {
+            color: var(--primary);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--darker);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .category-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            border-top: 4px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .category-card.accessories {
+            border-top-color: var(--secondary);
+        }
+        
+        .category-card.kids {
+            border-top-color: var(--accent);
+        }
+        
+        .category-card.beauty {
+            border-top-color: var(--primary);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .category-icon.accessories {
+            background: rgba(142, 36, 170, 0.1);
+            color: var(--secondary);
+        }
+        
+        .category-icon.kids {
+            background: rgba(255, 143, 0, 0.1);
+            color: var(--accent);
+        }
+        
+        .category-icon.beauty {
+            background: rgba(216, 27, 96, 0.1);
+            color: var(--primary);
+        }
+        
+        .category-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--darker);
+        }
+        
+        .category-card p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+        
+        .category-price-range {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 25px;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+        
+        .badge-accessories {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .badge-kids {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .badge-beauty {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .badge-new {
+            background: #4caf50;
+            color: white;
+            left: 100px;
+        }
+        
+        .badge-sale {
+            background: #f44336;
+            color: white;
+        }
+        
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-content {
+            padding: 25px;
+        }
+        
+        .product-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--darker);
+            min-height: 60px;
+        }
+        
+        .product-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-price .currency {
+            font-size: 1rem;
+            color: #666;
+            margin-right: 5px;
+        }
+        
+        .product-price del {
+            color: #999;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .add-to-cart {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--primary);
+        }
+        
+        /* Beauty Section */
+        .beauty-section {
+            padding: 80px 0;
+        }
+        
+        .beauty-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .beauty-category {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .beauty-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--darker);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .beauty-category h3 i {
+            color: var(--primary);
+        }
+        
+        .beauty-category ul {
+            list-style: none;
+        }
+        
+        .beauty-category li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .beauty-category li:last-child {
+            border-bottom: none;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(216, 27, 96, 0.05) 0%, rgba(142, 36, 170, 0.05) 100%);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.3rem;
+            margin-bottom: 25px;
+            color: var(--darker);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--darker);
+        }
+        
+        .feature-text p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128c7e;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            bottom: 0;
+            right: 0;
+        }
+        
+        .footer-column p {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-image {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 300px;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                transition: right 0.5s;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                border-left: 1px solid #eee;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: right;
+                padding: 15px 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero-text h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .category-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                left: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 15px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .beauty-categories, .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>YARA SHOP</h1>
+                    <div class="tagline">إكسسوارات نسائية، ألعاب أطفال، منتجات تجميل</div>
+                </div>
+            </a>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">الرئيسية</a></li>
+                    <li><a href="#categories">الفئات</a></li>
+                    <li><a href="#products">المنتجات</a></li>
+                    <li><a href="#beauty">التجميل والعطور</a></li>
+                    <li><a href="#about">عن المتجر</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">5</span>
+                </div>
+                <div class="mobile-menu-btn" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>YARA SHOP<br>وجهتكم في <span>مراكش</span></h2>
+                    <p>متخصصون في إكسسوارات النساء، ألعاب الأطفال، ومنتجات التجميل والعطور. نقدم لكم أفضل المنتجات بجودة عالية وأسعار مناسبة مع خدمة توصيل سريعة في مراكش.</p>
+                    <div class="hero-buttons">
+                        <a href="#categories" class="btn btn-outline">تصفح الفئات</a>
+                        <a href="#products" class="btn">تسوق الآن</a>
+                    </div>
+                    
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>توصيل سريع في مراكش</span>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-award"></i>
+                            <span>منتجات أصلية</span>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-headset"></i>
+                            <span>دعم فني متواصل</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="منتجات YARA SHOP">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>فئات منتجاتنا</h2>
+                <p>اكتشف تشكيلتنا المميزة من المنتجات المناسبة لجميع الأذواق والاحتياجات</p>
+            </div>
+            
+            <div class="category-cards">
+                <div class="category-card accessories">
+                    <div class="category-icon accessories">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>إكسسوارات نسائية</h3>
+                    <p>مجموعة مميزة من الإكسسوارات النسائية العصرية والأنيقة التي تناسب جميع المناسبات. تشمل أساور، عقود، أقراط، حقائب يد وأكثر.</p>
+                    <span class="category-price-range">50 - 800 درهم</span>
+                    <a href="#products" class="btn">تصفح الإكسسوارات</a>
+                </div>
+                
+                <div class="category-card kids">
+                    <div class="category-icon kids">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>ألعاب أطفال</h3>
+                    <p>تشكيلة واسعة من الألعاب التعليمية والترفيهية الآمنة للأطفال بجميع الأعمار. ألعاب تنمي مهارات الطفل وتسلّيه.</p>
+                    <span class="category-price-range">25 - 500 درهم</span>
+                    <a href="#products" class="btn">تصفح ألعاب الأطفال</a>
+                </div>
+                
+                <div class="category-card beauty">
+                    <div class="category-icon beauty">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>منتجات التجميل والعطور</h3>
+                    <p>أفضل منتجات التجميل والعناية بالبشرة والعطور من أشهر الماركات العالمية بجودة عالية وأسعار تنافسية.</p>
+                    <span class="category-price-range">30 - 1200 درهم</span>
+                    <a href="#beauty" class="btn">تصفح منتجات التجميل</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>منتجاتنا المميزة</h2>
+                <p>تشكيلة منتجات حصرية وأصلية بأسعار مناسبة في مراكش</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge badge-accessories">إكسسوارات</div>
+                    <div class="product-badge badge-new">جديد</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1596703923338-48f1c07e4f2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="طقم إكسسوارات">
+                    </div>
+                    <div class="product-content">
+                        <h3>طقم إكسسوارات نسائي كامل - ذهب وردي</h3>
+                        <p>طقم إكسسوارات أنيق يتضمن سوار، عقد وأقراط بتصميم عصري وجذاب يناسب جميع المناسبات.</p>
+                        <div class="product-price">240 <span class="currency">درهم</span></div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+                            <i class="far fa-heart" style="color: #ccc; font-size: 1.3rem; cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge badge-kids">ألعاب أطفال</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="لعبة تعليمية">
+                    </div>
+                    <div class="product-content">
+                        <h3>لعبة أطفال تعليمية إلكترونية متطورة</h3>
+                        <p>لعبة تعليمية ممتعة تساعد على تنمية مهارات الطفل المعرفية والحركية مع تصميم آمن وجذاب.</p>
+                        <div class="product-price">120 <span class="currency">درهم</span></div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+                            <i class="far fa-heart" style="color: #ccc; font-size: 1.3rem; cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge badge-beauty">تجميل</div>
+                    <div class="product-badge badge-sale">خصم 25%</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="طقم مكياج">
+                    </div>
+                    <div class="product-content">
+                        <h3>طقم مكياج كامل 15 قطعة - ألوان متنوعة</h3>
+                        <p>طقم مكياج متكامل يحتوي على 15 قطعة من أفضل منتجات التجميل بجودة عالية وألوان متنوعة.</p>
+                        <div class="product-price">
+                            <del>280</del> 210 <span class="currency">درهم</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+                            <i class="far fa-heart" style="color: #ccc; font-size: 1.3rem; cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge badge-accessories">إكسسوارات</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="حقيبة يد">
+                    </div>
+                    <div class="product-content">
+                        <h3>حقيبة يد نسائية أنيقة - جلد صناعي عالي الجودة</h3>
+                        <p>حقيبة يد نسائية بتصميم عصري وجذاب، مصنوعة من جلد صناعي عالي الجودة وتناسب جميع المناسبات.</p>
+                        <div class="product-price">180 <span class="currency">درهم</span></div>
+                        <div class="product-actions">
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+                            <i class="far fa-heart" style="color: #ccc; font-size: 1.3rem; cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#products" class="btn">عرض جميع المنتجات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beauty Section -->
+    <section id="beauty" class="beauty-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>منتجات التجميل والعطور</h2>
+                <p>اكتشف عالم الجمال مع تشكيلتنا المميزة من منتجات التجميل والعطور</p>
+            </div>
+            
+            <div class="beauty-categories">
+                <div class="beauty-category">
+                    <h3><i class="fas fa-paint-brush"></i> منتجات المكياج</h3>
+                    <ul>
+                        <li>أحمر شفاه وملمع شفاه <span>40 - 150 درهم</span></li>
+                        <li>مستحضرات أساس وكونسيلر <span>60 - 300 درهم</span></li>
+                        <li>ظلال عيون وماسكارا <span>35 - 200 درهم</span></li>
+                        <li>أحمر خدود وبرونزر <span>45 - 180 درهم</span></li>
+                        <li>فرش ومعدات المكياج <span>25 - 250 درهم</span></li>
+                    </ul>
+                </div>
+                
+                <div class="beauty-category">
+                    <h3><i class="fas fa-spa"></i> العناية بالبشرة</h3>
+                    <ul>
+                        <li>مستحضرات تنظيف البشرة <span>50 - 250 درهم</span></li>
+                        <li>مرطبات وكريمات يومية <span>70 - 350 درهم</span></li>
+                        <li>مستحضرات مكافحة الشيخوخة <span>120 - 600 درهم</span></li>
+                        <li>مقشرات وأقنعة الوجه <span>40 - 200 درهم</span></li>
+                        <li>مستحضرات العناية بالجسم <span>60 - 300 درهم</span></li>
+                    </ul>
+                </div>
+                
+                <div class="beauty-category">
+                    <h3><i class="fas fa-wind"></i> العطور ومستحضرات التجميل</h3>
+                    <ul>
+                        <li>عطور نسائية فاخرة <span>200 - 1200 درهم</span></li>
+                        <li>عطور رجالية أنيقة <span>180 - 1000 درهم</span></li>
+                        <li>مستحضرات تجميل للشعر <span>45 - 350 درهم</span></li>
+                        <li>مستحضرات عناية بالأظافر <span>30 - 150 درهم</span></li>
+                        <li>مستحضرات تجميل خاصة <span>80 - 500 درهم</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#contact" class="btn">استفسر عن منتجات التجميل</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>YARA SHOP - وجهتكم في مراكش</h2>
+                    <p>نحن وجهتكم الأولى في مراكش لإكسسوارات النساء، ألعاب الأطفال، ومنتجات التجميل والعطور. نسعى لتوفير أفضل تجربة تسوق لعملائنا الكرام.</p>
+                    <p>نفتخر بكوننا نقدم تشكيلة واسعة من المنتجات بجودة عالية وأسعار مناسبة مع خدمة توصيل سريعة في جميع أنحاء مدينة مراكش.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>توصيل سريع</h4>
+                                <p>توصيل خلال 24 ساعة في مراكش</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>منتجات أصلية</h4>
+                                <p>جودة عالية وضمان المنتج</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>دعم فني</h4>
+                                <p>دعم عملاء متواصل</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>أسعار مناسبة</h4>
+                                <p>أفضل الأسعار في السوق</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="متجر YARA SHOP">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/212612345678?text=مرحباً%20أريد%20الاستفسار%20عن%20منتجات%20YARA%20SHOP" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>YARA SHOP</h3>
+                    <p>وجهتكم الأولى في مراكش لإكسسوارات النساء، ألعاب الأطفال، ومنتجات التجميل والعطور بجودة عالية وأسعار مناسبة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#categories"><i class="fas fa-chevron-left"></i> الفئات</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-left"></i> المنتجات</a></li>
+                        <li><a href="#beauty"><i class="fas fa-chevron-left"></i> منتجات التجميل</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> عن المتجر</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>معلومات الاتصال</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>العنوان:</strong>
+                                <span>شارع محمد السادس، حي الرياض، مراكش - المغرب</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>الهاتف:</strong>
+                                <span>+212 6 12 34 56 78</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <strong>واتساب:</strong>
+                                <span>+212 6 12 34 56 78</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>البريد الإلكتروني:</strong>
+                                <span>info@yarashop-marrakech.com</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 YARA SHOP - مراكش. جميع الأسعار بالدرهم المغربي</p>
+                <p>متخصصون في إكسسوارات النساء، ألعاب الأطفال، ومنتجات التجميل والعطور | خدمة التوصيل متاحة في جميع أحياء مراكش</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            
+            // Change icon
+            const icon = menuToggle.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    mainNav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartCount = document.querySelector('.cart-count');
+        let count = 5;
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                count++;
+                cartCount.textContent = count;
+                
+                // Add animation
+                cartCount.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    cartCount.style.transform = 'scale(1)';
+                }, 300);
+                
+                // Show confirmation
+                const productName = this.closest('.product-content').querySelector('h3').textContent;
+                const productPrice = this.closest('.product-content').querySelector('.product-price').textContent;
+                const productCategory = this.closest('.product-card').querySelector('.product-badge').textContent;
+                
+                // Create custom notification
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 30px;
+                    background: white;
+                    color: var(--dark);
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    z-index: 1000;
+                    border-left: 5px solid var(--primary);
+                    max-width: 350px;
+                    animation: slideInRight 0.5s ease, fadeOut 0.5s ease 3s forwards;
+                    border: 1px solid #eee;
+                `;
+                notification.innerHTML = `
+                    <h4 style="margin: 0 0 10px 0; display: flex; align-items: center; gap: 10px; color: var(--primary);">
+                        <i class="fas fa-check-circle"></i> تمت الإضافة بنجاح
+                    </h4>
+                    <p style="margin: 0 0 5px 0; font-size: 0.95rem;"><strong>${productName}</strong></p>
+                    <p style="margin: 0; font-size: 0.9rem; color: #666;">تمت إضافة المنتج إلى سلة التسوق</p>
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <span style="font-size: 0.9rem;"><strong>الفئة:</strong> ${productCategory}</span>
+                        <span style="font-size: 0.9rem;"><strong>السعر:</strong> ${productPrice}</span>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                
+                // Remove notification after animation
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 3500);
+                
+                // Add CSS for animation
+                if (!document.getElementById('notification-styles')) {
+                    const style = document.createElement('style');
+                    style.id = 'notification-styles';
+                    style.textContent = `
+                        @keyframes slideInRight {
+                            from { transform: translateX(100%); opacity: 0; }
+                            to { transform: translateX(0); opacity: 1; }
+                        }
+                        @keyframes fadeOut {
+                            from { opacity: 1; }
+                            to { opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Initialize with active link
+        window.addEventListener('load', function() {
+            // Highlight current section on load
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}` || (current === '' && link.getAttribute('href') === '#home')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
